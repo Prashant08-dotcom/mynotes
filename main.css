@@ -1,0 +1,278 @@
+*,
+*::after,
+*::before {
+    /* is a universal selector that apply to all elements of the body*/
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    /*change the box model*/
+}
+
+html {
+    font-size: 62.5%;
+    /* declaring font size in root means all rem value will be ralited to this 
+    in our page and text will be screen responsive */
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    /*  that is use lato if not avialable then use sans-serif*/
+    font-weight: 400;
+    /* font-size: 16px;*/
+    line-height: 1.7;
+    /* that is line height would be 1.7 times greater than actual inherited height */
+    color: #777;
+    padding: 3rem;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+
+.header-home {
+    background-image: url(header-image.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+
+
+/* Add a black background color to the top navigation */
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+
+/* Style the links inside the navigation bar */
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 3rem;
+    font-family: cursive;
+}
+
+.topnav p {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 3rem;
+}
+
+
+/* Change the color of links on hover */
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+/* Add a color to the active/current link */
+
+.topnav a.active {
+    color: white;
+}
+
+.icon-bar {
+    width: 90px;
+    /* Set a specific width */
+    background-color: #555;
+    /* Dark-grey background */
+    z-index: 1;
+}
+
+.icon-bar a {
+    display: block;
+    /* Make the links appear below each other instead of side-by-side */
+    text-align: center;
+    /* Center-align text */
+    padding: 16px;
+    /* Add some padding */
+    transition: all 0.3s ease;
+    /* Add transition for hover effects */
+    color: white;
+    /* White text color */
+    font-size: 36px;
+    /* Increased font-size */
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+    /* Add a hover color */
+}
+
+.active {
+    background-color: #4CAF50;
+    /* Add an active/current color */
+}
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-box {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    /*to shift the box with relation to parent*/
+    transform: translate(-50%, -50%);
+    /* to shift the box to left side with the element itself */
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+}
+
+.heading-primary {
+    color: #ffffff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    /* means that any function behind the page will be hidden*/
+    margin-bottom: 6rem;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 1.5rem;
+    animation-name: moveleft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /* that is animation start faster and become slower at last*/
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* animation: moveright, 2s, ease-out;
+      /* declaration in one line means same as above
+      in headin-primary-main*/
+    animation-name: moveright;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveleft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    80% {
+        transform: translateX(1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveright {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    80% {
+        transform: translateX(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.section-about {
+    padding: 10rem 0;
+}
+
+.column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+    font-size: large;
+    font-family: sans-serif;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container h2 {
+    font-size: 3.5rem;
+    color: #000;
+}
+
+.container p {
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #000;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.footer {
+    padding: 20px;
+    /* Some padding */
+    text-align: center;
+    /* Center text*/
+    background: #333;
+    /* Grey background */
+}
+
+.footer h2 {
+    color: white;
+}
