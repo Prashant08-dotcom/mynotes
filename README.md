@@ -1,2 +1,0 @@
-# mynotes
-homepage added
