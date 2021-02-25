@@ -1,6 +1,3 @@
-alert("!ask only, when you feel necessary.Thank you!");
-
-
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
