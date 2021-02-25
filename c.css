@@ -225,9 +225,10 @@ pre {
     color: rgba(37, 38, 94, 0.7);
 }
 
-.pdf1 {
+#pdf1 {
     padding: 3rem 0;
     width: 100%;
+    height: 660px;
     text-align: center;
 }
 
