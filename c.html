@@ -23,7 +23,7 @@
         <div class="topnav" id="myTopnav">
             <a href="home.html" class="active"><i class="fa fa-home"></i></a>
             <a href="c.html">C</a>
-            <a href="mis.html">MIS</a>
+            <a href="previousyearQestion.html">QUESTIONS</a>
             <a href="fundamental.html">C-FUNDAMENTAL</a>
             <a href="math.html">MATH</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -821,48 +821,411 @@
                         </pre>
                     </div>
 
-                    <button type="button" class="collapsible">C Programme to check wether a number caan be defined as sum of two prime number or not.</button>
+                    <button type="button" class="collapsible">C Programme to check wether a number can be defined as sum of two prime number or not.</button>
                     <div class="content">
                         <pre>
+                            #include <stdio.h>
+                                int checkPrime(int n);
+                                void main() {
+                                    int n, i, flag = 0;
+                                    printf("Enter a positive integer: ");
+                                    scanf("%d", &n);
+                                
+                                    for (i = 2; i <= n / 2; ++i) {
+                                        // condition for i to be a prime number
+                                        if (checkPrime(i) == 1) {
+                                            // condition for n-i to be a prime number
+                                            if (checkPrime(n - i) == 1) {
+                                                printf("%d = %d + %d\n", n, i, n - i);
+                                                flag = 1;
+                                            }
+                                        }
+                                    }
+                                    if (flag == 0)
+                                        printf("%d cannot be expressed as the sum of two prime numbers.", n);
+                                
+                                    getch();
+                                }
+                                
+                                // function to check prime number
+                                int checkPrime(int n) {
+                                    int i, isPrime = 1;
+                                    for (i = 2; i <= n / 2; ++i) {
+                                        if (n % i == 0) {
+                                            isPrime = 0;
+                                            break;
+                                        }
+                                    }
+                                    return isPrime;
+                                }
+                            </pre>
+
                     </div>
 
                     <button type="button" class="collapsible">C Programme to convert Binary to Decimal and vice-versa.</button>
                     <div class="content">
                         <pre>
+                            Program to convert binary to decimal
+
+                            #include <math.h>
+                                #include <stdio.h>
+                                int convert(long long n);
+                                void main() {
+                                    long long n;
+                                    printf("Enter a binary number: ");
+                                    scanf("%lld", &n);
+                                    printf("%lld in binary = %d in decimal", n, convert(n));
+                                    getch();
+                                }
+                                
+                                int convert(long long n) {
+                                    int dec = 0, i = 0, rem;
+                                    while (n != 0) {
+                                        rem = n % 10;
+                                        n /= 10;
+                                        dec += rem * pow(2, i);
+                                        ++i;
+                                    }
+                                    return dec;
+                                }
+
+
+                                Program to convert decimal to binary
+
+                                #include <math.h>
+                                    #include <stdio.h>
+                                    long long convert(int n);
+                                    void main() {
+                                        int n;
+                                        printf("Enter a decimal number: ");
+                                        scanf("%d", &n);
+                                        printf("%d in decimal = %lld in binary", n, convert(n));
+                                        getch();
+                                    }
+                                    
+                                    long long convert(int n) {
+                                        long long bin = 0;
+                                        int rem, i = 1, step = 1;
+                                        while (n != 0) {
+                                            rem = n % 2;
+                                            printf("Step %d: %d/2, Remainder = %d, Quotient = %d\n", step++, n, rem, n / 2);
+                                            n /= 2;
+                                            bin += rem * i;
+                                            i *= 10;
+                                        }
+                                        return bin;
+                                    }
+                        </pre>
+
                     </div>
-                   
+
                     <button type="button" class="collapsible">C Programme to calculate average using Arrays.</button>
                     <div class="content">
                         <pre>
+                            #include <stdio.h>
+                                void main() {
+                                    int n, i;
+                                    float num[100], sum = 0.0, avg;
+                                
+                                    printf("Enter the numbers of elements: ");
+                                    scanf("%d", &n);
+                                
+                                    while (n > 100 || n < 1) {
+                                        printf("Error! number should in range of (1 to 100).\n");
+                                        printf("Enter the number again: ");
+                                        scanf("%d", &n);
+                                    }
+                                
+                                    for (i = 0; i < n; ++i) {
+                                        printf("%d. Enter number: ", i + 1);
+                                        scanf("%f", &num[i]);
+                                        sum += num[i];
+                                    }
+                                
+                                    avg = sum / n;
+                                    printf("Average = %.2f", avg);
+                                    getch();
+                                }
+                        </pre>
                     </div>
-                   
+
 
                     <button type="button" class="collapsible">C Programme to calculate Standard Deviation.</button>
                     <div class="content">
                         <pre>
+                                                   
+#include <math.h>
+    #include <stdio.h>
+    float calculateSD(float data[]);
+    void main() {
+        int i;
+        float data[10];
+        printf("Enter 10 elements: ");
+        for (i = 0; i < 10; ++i)
+            scanf("%f", &data[i]);
+        printf("\nStandard Deviation = %.6f", calculateSD(data));
+        getch();
+    }
+    
+    float calculateSD(float data[]) {
+        float sum = 0.0, mean, SD = 0.0;
+        int i;
+        for (i = 0; i < 10; ++i) {
+            sum += data[i];
+        }
+        mean = sum / 10;
+        for (i = 0; i < 10; ++i) {
+            SD += pow(data[i] - mean, 2);
+        }
+        return sqrt(SD / 10);
+    }
+                        </pre>
                     </div>
-                   
+
                     <button type="button" class="collapsible">C Programme to Dispaly Armstrong number between two intervals.</button>
                     <div class="content">
                         <pre>
+                            #include <math.h>
+                                #include <stdio.h>
+                                void main() {
+                                   int low, high, number, originalNumber, rem, count = 0;
+                                   double result = 0.0;
+                                   printf("Enter two numbers(intervals): ");
+                                   scanf("%d %d", &low, &high);
+                                   printf("Armstrong numbers between %d and %d are: ", low, high);
+                                
+                                   // iterate number from (low + 1) to (high - 1)
+                                   // In each iteration, check if number is Armstrong
+                                   for (number = low + 1; number < high; ++number) {
+                                      originalNumber = number;
+                                
+                                      // number of digits calculation
+                                      while (originalNumber != 0) {
+                                         originalNumber /= 10;
+                                         ++count;
+                                      }
+                                
+                                      originalNumber = number;
+                                
+                                      // result contains sum of nth power of individual digits
+                                      while (originalNumber != 0) {
+                                         rem = originalNumber % 10;
+                                         result += pow(rem, count);
+                                         originalNumber /= 10;
+                                      }
+                                
+                                      // check if number is equal to the sum of nth power of individual digits
+                                      if ((int)result == number) {
+                                         printf("%d ", number);
+                                      }
+                                
+                                      // resetting the values
+                                      count = 0;
+                                      result = 0;
+                                   }
+                                
+                                   getch();
+                                }
+                        </pre>
                     </div>
-                   
+
                     <button type="button" class="collapsible">C Programme to Add two Matrices using Multi-Dimensional Array.</button>
                     <div class="content">
                         <pre>
+                            #include <stdio.h>
+                                void main() {
+                                  int r, c, a[100][100], b[100][100], sum[100][100], i, j;
+                                  printf("Enter the number of rows (between 1 and 100): ");
+                                  scanf("%d", &r);
+                                  printf("Enter the number of columns (between 1 and 100): ");
+                                  scanf("%d", &c);
+                                
+                                  printf("\nEnter elements of 1st matrix:\n");
+                                  for (i = 0; i < r; ++i)
+                                    for (j = 0; j < c; ++j) {
+                                      printf("Enter element a%d%d: ", i + 1, j + 1);
+                                      scanf("%d", &a[i][j]);
+                                    }
+                                
+                                  printf("Enter elements of 2nd matrix:\n");
+                                  for (i = 0; i < r; ++i)
+                                    for (j = 0; j < c; ++j) {
+                                      printf("Enter element b2%d%d: ", i + 1, j + 1);
+                                      scanf("%d", &b[i][j]);
+                                    }
+                                
+                                  // adding two matrices
+                                  for (i = 0; i < r; ++i)
+                                    for (j = 0; j < c; ++j) {
+                                      sum[i][j] = a[i][j] + b[i][j];
+                                    }
+                                
+                                  // printing the result
+                                  printf("\nSum of two matrices: \n");
+                                  for (i = 0; i < r; ++i)
+                                    for (j = 0; j < c; ++j) {
+                                      printf("%d   ", sum[i][j]);
+                                      if (j == c - 1) {
+                                        printf("\n\n");
+                                      }
+                                    }
+                                
+                                  getch();
+                                }
+                        </pre>
                     </div>
 
                     <button type="button" class="collapsible">C Programme to find Transpose of a matrix.</button>
                     <div class="content">
                         <pre>
+                            #include <stdio.h>
+                                void main() {
+                                    int a[10][10], transpose[10][10], r, c, i, j;
+                                    printf("Enter rows and columns: ");
+                                    scanf("%d %d", &r, &c);
+                                
+                                    // Assigning elements to the matrix
+                                    printf("\nEnter matrix elements:\n");
+                                    for (i = 0; i < r; ++i)
+                                        for (j = 0; j < c; ++j) {
+                                            printf("Enter element a%d%d: ", i + 1, j + 1);
+                                            scanf("%d", &a[i][j]);
+                                        }
+                                
+                                    // Displaying the matrix a[][]
+                                    printf("\nEntered matrix: \n");
+                                    for (i = 0; i < r; ++i)
+                                        for (j = 0; j < c; ++j) {
+                                            printf("%d  ", a[i][j]);
+                                            if (j == c - 1)
+                                                printf("\n");
+                                        }
+                                
+                                    // Finding the transpose of matrix a
+                                    for (i = 0; i < r; ++i)
+                                        for (j = 0; j < c; ++j) {
+                                            transpose[j][i] = a[i][j];
+                                        }
+                                
+                                    // Displaying the transpose of matrix a
+                                    printf("\nTranspose of the matrix:\n");
+                                    for (i = 0; i < c; ++i)
+                                        for (j = 0; j < r; ++j) {
+                                            printf("%d  ", transpose[i][j]);
+                                            if (j == r - 1)
+                                                printf("\n");
+                                        }
+                                    getch();
+                                }
+                        </pre>
                     </div>
 
                     <button type="button" class="collapsible">C Programme to Arrange values in ascending order in an Array.</button>
                     <div class="content">
                         <pre>
+                            #include <stdio.h>
+                                void main()
+                                {
+                             
+                                    int i, j, a, n, number[30];
+                                    printf("Enter the value of N \n");
+                                    scanf("%d", &n);
+                             
+                                    printf("Enter the numbers \n");
+                                    for (i = 0; i < n; ++i)
+                                        scanf("%d", &number[i]);
+                             
+                                    for (i = 0; i < n; ++i) 
+                                    {
+                             
+                                        for (j = i + 1; j < n; ++j)
+                                        {
+                             
+                                            if (number[i] > number[j]) 
+                                            {
+                             
+                                                a =  number[i];
+                                                number[i] = number[j];
+                                                number[j] = a;
+                             
+                                            }
+                             
+                                        }
+                             
+                                    }
+                             
+                                    printf("The numbers arranged in ascending order are given below \n");
+                                    for (i = 0; i < n; ++i)
+                                        printf("%d\n", number[i]);
+                                    
+                                    getch();
+                                }
+                        </pre>
                     </div>
-                  
-                  
+
+                    <button type="button" class="collapsible">C Programme to show working of pointers.</button>
+                    <div class="content">
+                        <pre>
+                            #include <stdio.h>
+                                void main()
+                                {
+                                   int* pc, c;
+                                   
+                                   c = 22;
+                                   printf("Address of c: %p\n", &c);
+                                   printf("Value of c: %d\n\n", c);  // 22
+                                   
+                                   pc = &c;
+                                   printf("Address of pointer pc: %p\n", pc);
+                                   printf("Content of pointer pc: %d\n\n", *pc); // 22
+                                   
+                                   c = 11;
+                                   printf("Address of pointer pc: %p\n", pc);
+                                   printf("Content of pointer pc: %d\n\n", *pc); // 11
+                                   
+                                   *pc = 2;
+                                   printf("Address of c: %p\n", &c);
+                                   printf("Value of c: %d\n\n", c); // 2
+                                   getch();
+                                }
+                                *************************************************
+                                for more visit:
+                                <a href="https://www.programiz.com/c-programming/c-pointers">click to know more about pointers!</a>
+                        </pre>
+                    </div>
+                    <button type="button" class="collapsible">Sum of Natural Numbers Using Recursion </button>
+                    <div class="content">
+                        <pre>
+                            #include <stdio.h>
+                                int sum(int n);
+                                
+                                void main() {
+                                    int number, result;
+                                
+                                    printf("Enter a positive integer: ");
+                                    scanf("%d", &number);
+                                
+                                    result = sum(number);
+                                
+                                    printf("sum = %d", result);
+                                    getch();
+                                }
+                                
+                                int sum(int n) {
+                                    if (n != 0)
+                                        // sum() function calls itself
+                                        return n + sum(n-1); 
+                                    else
+                                        return n;
+                                }
+
+                                *************************************************
+                                for more visit:
+                                <a href="https://www.programiz.com/c-programming/c-recursion">click to know more about Recursion!</a>
+
+                        </pre>
+                    </div>
+
 
                 </ul>
 
@@ -874,16 +1237,16 @@
                 <img src="c-pattern5.png" alt="c-pattern5" style="max-width: 100%;">
                 <img src="c-pattern6.png" alt="c-pattern6" style="max-width: 100%;">
 
-    
+
 
             </div>
-    
+
         </div>
         <hr class="solid" style=" border-top: 8px solid #bbb;border-radius: 5px;">
 
 
         <button id="pdf1" type="button" class="collapsible">C Introduction, Flow charts, if-else ladder..</button>
-        
+
         <div class="pdf1">
 
             <img src="Notes 01.jpg" type="" width="90%" height="100%">
@@ -906,10 +1269,10 @@
             <img src="Notes 18.jpg" type="" width="90%" height="100%">
 
         </div>
-        
+
 
         <button id="pdf2" type="button" class="collapsible">C Araay..</button>
-        
+
         <div class="pdf1">
 
             <img src="0001.jpg" type="" width="90%" height="100%">
@@ -943,10 +1306,10 @@
 
 
         </div>
-        
+
     </section>
 
-    
+
 
 
     <section class="section-footer">
