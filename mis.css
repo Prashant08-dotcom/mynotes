@@ -155,6 +155,13 @@ body {
     padding: 3rem 0;
 }
 
+pre {
+    color: rgba(37, 38, 94, 0.7);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
 .pdf {
     padding: 3rem 0;
     width: 100%;

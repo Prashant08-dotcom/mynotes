@@ -223,6 +223,9 @@ body {
 
 pre {
     color: rgba(37, 38, 94, 0.7);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
 }
 
 .pdf1 {
